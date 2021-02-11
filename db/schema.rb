@@ -69,4 +69,10 @@ ActiveRecord::Schema.define(version: 2021_02_11_224800) do
     t.index ["invoices_id"], name: "index_transactions_on_invoices_id"
   end
 
+  add_foreign_key "invoice_items", "invoices", column: "invoices_id"
+  add_foreign_key "invoice_items", "items", column: "items_id"
+  add_foreign_key "invoices", "customers", column: "customers_id"
+  add_foreign_key "invoices", "merchants", column: "merchants_id"
+  add_foreign_key "items", "merchants", column: "merchants_id"
+  add_foreign_key "transactions", "invoices", column: "invoices_id"
 end

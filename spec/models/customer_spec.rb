@@ -6,6 +6,10 @@ RSpec.describe Customer, type: :model do
     it { should validate_presence_of :last_name}
   end
 
+  describe 'relationships' do
+    it {should have_many :invoices}
+  end
+
   describe 'instance methods' do
   end
 end
