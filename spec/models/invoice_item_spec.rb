@@ -9,8 +9,8 @@ RSpec.describe InvoiceItem, type: :model do
   end
 
   describe 'relationships' do
-    it {should belong_to :}
-    it {should have_many :}
+    it {should belong_to :invoice}
+    it {should belong_to :item}
   end
 
   describe 'instance methods' do
