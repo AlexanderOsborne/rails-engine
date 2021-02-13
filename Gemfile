@@ -37,6 +37,7 @@ group :development, :test do
   gem 'launchy'
   gem "pry"
   gem "shoulda-matchers"
+  gem "jsonapi-serializer"
 end
 
 group :development do
