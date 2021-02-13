@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2021_02_11_224800) do
   create_table "invoices", force: :cascade do |t|
     t.bigint "customer_id"
     t.bigint "merchant_id"
-    t.integer "status", default: 0, null: false
+    t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["customer_id"], name: "index_invoices_on_customer_id"
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 2021_02_11_224800) do
     t.bigint "invoice_id"
     t.integer "credit_card_number"
     t.string "credit_card_expiration_date"
-    t.integer "results", default: 0, null: false
+    t.string "results"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["invoice_id"], name: "index_transactions_on_invoice_id"
