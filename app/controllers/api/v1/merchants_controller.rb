@@ -4,7 +4,11 @@ class Api::V1::MerchantsController < ApplicationController
   end
 
   def show
+    begin
     render json: MerchantSerializer.new(Merchant.find(params[:id]))
+    rescue
+    render json: {"error" => {}}, status:404
+    end
   end
 
 end
