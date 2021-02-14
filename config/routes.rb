@@ -10,10 +10,9 @@ Rails.application.routes.draw do
       resources :items, only: [:index]
     end
 
-    # resources :items, module: :items, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
-    #   resources :merchants, only: [:index]
-    # end
-    
+    resources :items, only: [:index, :show, :create, :destroy, :update] do
+      resource :merchant, only: [:show]
+    end
 
     # namespace :items do
     #   resources :find_all, controller: 'search', only: [:index]
