@@ -8,10 +8,13 @@ class Api::V1::ItemsController < ApplicationController
     end
   end
 
-  # def show
-  #   item = Item.find(params[:id])
-  #   render json: ItemSerializer.format_item(item)
-  # end
+  def show
+    begin
+      render json: ItemSerializer.new(Item.find(params[:id]))
+    rescue
+      render json: {"error" => {}}, status:404
+    end
+  end
 
   # def create
   #   item = Item.create!(item_params)
