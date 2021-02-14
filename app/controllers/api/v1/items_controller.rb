@@ -19,7 +19,7 @@ class Api::V1::ItemsController < ApplicationController
   def create
     item = Item.create!(item_params)
     begin
-      render json: ItemSerializer.new(item)
+      render json: ItemSerializer.new(item), status: :created
     rescue
       render json: {"error" => {}}, status:404
     end
@@ -31,9 +31,6 @@ class Api::V1::ItemsController < ApplicationController
   #   render json: ItemSerializer.format_item(item)
   # end
 
-  def destroy
-    Item.find(params[:id]).destroy
-  end
 
   # def find_all
   #   items = if params[:name].present? && !(params[:min_price] || params[:max_price])
