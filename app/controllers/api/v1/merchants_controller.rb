@@ -10,7 +10,11 @@ class Api::V1::MerchantsController < ApplicationController
 
   def show
     begin
-      render json: MerchantSerializer.new(Merchant.find(params[:id]))
+      if params[:item_id]
+        render json: MerchantSerializer.new(Item.find(params[:item_id]).merchant)
+      else
+        render json: MerchantSerializer.new(Merchant.find(params[:id]))
+      end
     rescue
       render json: {"error" => {}}, status:404
     end
