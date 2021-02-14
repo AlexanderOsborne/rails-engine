@@ -1,6 +1,5 @@
 class Api::V1::ItemsController < ApplicationController
   def index
-    # require 'pry'; binding.pry
     begin
       render json: ItemSerializer.new(Item.select_records(params))
     rescue
@@ -25,11 +24,19 @@ class Api::V1::ItemsController < ApplicationController
     end
   end
 
-  # def update
-  #   item = Item.find(params[:id])
-  #   item.update!(item_params)
-  #   render json: ItemSerializer.format_item(item)
-  # end
+  def destroy
+    Item.find(params[:id]).destroy
+  end
+
+  def update
+    begin
+      item = Item.find(params[:id])
+      item.update!(item_params)
+      render json: ItemSerializer.new(item), status:202
+    rescue
+      render json: {"error" => {}}, status:404
+    end
+  end
 
 
   # def find_all
