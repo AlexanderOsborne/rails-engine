@@ -1,13 +1,5 @@
-class Api::V1::MerchantsController < ApplicationController
-
-  def index
-    begin
-      render json: MerchantSerializer.new(Merchant.select_records(params))
-    rescue
-      render json: {"error" => {}}, status:404
-    end
-  end
-
+class Api::V1::Items::MerchantsController < ApplicationController
+  
   def show
     begin
       if params[:item_id]
@@ -19,5 +11,4 @@ class Api::V1::MerchantsController < ApplicationController
       render json: {"error" => {}}, status:404
     end
   end
-
 end

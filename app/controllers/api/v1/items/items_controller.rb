@@ -1,4 +1,4 @@
-class Api::V1::ItemsController < ApplicationController
+class Api::V1::Items::ItemsController < ApplicationController
   def index
     begin
       render json: ItemSerializer.new(Item.select_records(params))
