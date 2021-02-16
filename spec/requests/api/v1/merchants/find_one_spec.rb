@@ -5,7 +5,7 @@ RSpec.describe 'merchant search' do
     create(:merchant, name: "Taco's y Salsas")
 
     get "/api/v1/merchants/find?name=taco"
-
+    
     expect(response).to be_successful
 
     merchant = JSON.parse(response.body, symbolize_names: true)

@@ -20,4 +20,13 @@ class Api::V1::Merchants::MerchantsController < ApplicationController
     end
   end
 
+  def find
+    require 'pry'; binding.pry
+    begin
+      merchant = Merchant.find_one(params[:name]) if params[:name]
+      render json: MerchantSerializer.new(merchant)
+    rescue
+      render json: {"error" => {}}, status:404
+    end
+  end
 end
