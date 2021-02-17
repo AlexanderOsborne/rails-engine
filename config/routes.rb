@@ -1,17 +1,13 @@
 Rails.application.routes.draw do
  namespace :api do
   namespace :v1 do
-    
-    resources :merchants, module: :merchants, only:[:show, :index] do 
-      resources :items, only: [:index]
-    end
-
-    # resource :merchants, module: :merchants, only:[] do
-    #   get 'merchants/find', to: 'merchants#find'
-    # end
 
     scope module: :merchants do
       get 'merchants/find', to: 'merchants#find'
+    end
+    
+    resources :merchants, module: :merchants, only:[:show, :index] do 
+      resources :items, only: [:index]
     end
 
     resources :items, module: :items, only: [:index, :show, :create, :destroy, :update] do

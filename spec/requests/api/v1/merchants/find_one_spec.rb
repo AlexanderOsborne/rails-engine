@@ -18,12 +18,11 @@ RSpec.describe 'merchant search' do
   it 'returns an empty hash if no merchant is not found' do
     create(:merchant)
 
-    get "/api/v1/merchants/find?name=imnotreal"
+    get "/api/v1/merchants/find?name=NOMATCH"
 
     expect(response).to be_successful
 
     merchant = JSON.parse(response.body, symbolize_names: true)
-
     expect(merchant).to be_a(Hash)
     expect(merchant[:data]).to be_empty
   end
@@ -36,7 +35,6 @@ RSpec.describe 'merchant search' do
     merchant = JSON.parse(response.body, symbolize_names: true)
 
     expect(merchant).to be_a(Hash)
-    check_hash_structure(merchant, :data, Hash)
     expect(merchant[:data]).to be_empty
   end
 end
