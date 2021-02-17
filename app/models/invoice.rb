@@ -5,5 +5,5 @@ class Invoice < ApplicationRecord
   belongs_to :merchant
   has_many :invoice_items, dependent: :destroy
   has_many :transactions, dependent: :destroy
-  enum status: [:pending, :packaged, :shipped, :returned]
+  # enum status: [:pending, :packaged, :shipped, :returned]
 end
