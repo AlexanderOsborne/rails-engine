@@ -6,4 +6,8 @@ class ApplicationRecord < ActiveRecord::Base
     skipped_pages = [params[:page].to_i, 1].max - 1
     limit(results).offset(results * skipped_pages)
   end
+
+  def self.search(query)
+    where('LOWER(name) LIKE ?', "%#{query.downcase}%").order(:name)
+  end
 end

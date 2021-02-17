@@ -21,7 +21,7 @@ class Api::V1::Merchants::MerchantsController < ApplicationController
   end
 
   def find
-      merchant = Merchant.find_one(params[:name]) if params[:name]
+      merchant = Merchant.search(params[:name]).first if params[:name]
       if merchant.nil?
         render json: {"data" => {}}, status:200
       else
