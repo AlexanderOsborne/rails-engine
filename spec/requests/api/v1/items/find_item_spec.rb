@@ -7,7 +7,6 @@ RSpec.describe 'Items', type: :request do
 
       get api_v1_item_path(item.id)
       expect(response.status).to eq(200)
-      # require 'pry'; binding.pry
       json = JSON.parse(response.body, symbolize_names: true)
       expect(json[:data][:id]).to eq(item.id.to_s)
     end
