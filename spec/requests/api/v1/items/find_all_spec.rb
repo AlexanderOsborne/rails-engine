@@ -25,21 +25,6 @@ RSpec.describe 'items search' do
       end
     end
 
-    it 'searches both the name and description fields' do
-      merchant = create(:merchant)
-      create(:item, name: "Breakfast tacos", merchant: merchant)
-      create(:item, description: "Perfect tacos for a first date", merchant: merchant)
-
-      get "/api/v1/items/find_all?name=tacos"
-
-      expect(response.status).to eq(200)
-      expect(response).to be_successful
-
-      items = JSON.parse(response.body, symbolize_names: true)
-
-      expect(items[:data].count).to eq(2)
-    end
-
     it 'returns an empty array if no items are not found' do
       merchant = create(:merchant)
       create(:item, merchant: merchant)

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     end
 
     scope module: :items do
-      get 'items/find_all', to: 'merchants#find_all'
+      get 'items/find_all', to: 'items#find_all'
     end
     
     resources :merchants, module: :merchants, only:[:show, :index] do 
