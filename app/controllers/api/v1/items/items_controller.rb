@@ -38,7 +38,6 @@ class Api::V1::Items::ItemsController < ApplicationController
     end
   end
 
-
   def find_all
     items = if params[:name].present? && !(params[:min_price] || params[:max_price])
               Item.search(params[:name])
@@ -51,7 +50,6 @@ class Api::V1::Items::ItemsController < ApplicationController
   end
 
   private
-
   def item_params
     params.require(:item).permit(:name, :description, :unit_price, :merchant_id)
   end
