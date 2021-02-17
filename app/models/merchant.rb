@@ -7,11 +7,10 @@ class Merchant < ApplicationRecord
   has_many :invoice_items, through: :items
 
   def self.top_revenue(params)
-    require 'pry'; binding.pry
     joins(invoices: %i[invoice_items transactions])
     .select('merchants.*, sum(invoice_items.quantity * invoice_items.unit_price) AS revenue')
     .where('invoices.status = ? AND transactions.result = ?', "shipped", "success")
-    .limit(params)
+    .limit(params[:quantity])
     .order('revenue desc')
     .group(:id)
   end

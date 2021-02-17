@@ -11,6 +11,7 @@ class Api::V1::Revenue::MerchantsController < ApplicationController
   
   def show
     begin
+      require 'pry'; binding.pry
       merchant = Merchant.top_revenue(1).find(params[:id])
       render json: MerchantRevenueSerializer.new(merchant)
     rescue
