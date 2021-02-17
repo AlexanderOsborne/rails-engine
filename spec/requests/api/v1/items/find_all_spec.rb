@@ -122,15 +122,15 @@ RSpec.describe 'items search' do
     merchant = create(:merchant)
     create_list(:item, 5, merchant: merchant)
 
-    get "/api/v1/items/find_all?max_price=9.99&min_price=4.99&name=pants"
+    get "/api/v1/items/find_all?max_price=2.00&min_price=2.00&name=beer"
 
     expect(response.status).to eq(400)
 
-    get "/api/v1/items/find_all?max_price=9.99&name=pants"
+    get "/api/v1/items/find_all?max_price=2.00&name=taco"
 
     expect(response.status).to eq(400)
 
-    get "/api/v1/items/find_all?min_price=4.99&name=pants"
+    get "/api/v1/items/find_all?min_price=2.00&name=cerveza"
 
     expect(response.status).to eq(400)
   end
