@@ -46,7 +46,11 @@ class Api::V1::Items::ItemsController < ApplicationController
             elsif params[:name].blank?
               []
             end
+    if params[:name].present? && (params[:min_price] || params[:max_price]).present?
+      render json: {"error" => {}}, status:400
+    else
     render json: ItemSerializer.new(items)
+    end
   end
 
   private
