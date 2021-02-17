@@ -18,15 +18,9 @@ Rails.application.routes.draw do
       resource :merchant, only: [:show]
     end
 
-    # namespace :items do
-    #   resources :find_all, controller: 'search', only: [:index]
-    #   # resources :find, controller: 'search', only: [:index]
-    # end
-
-    # namespace :merchants do
-    #   resources :find, controller: 'search', only: [:index]
-    # #   # resources :find_all, controller: 'search', only: [:index]
-    # end
+    namespace :revenue do
+      resources :merchants, only: [:show, :index]
+    end
 
     # #For Daterange breakout
     # resources :revenue, only: [:index]
