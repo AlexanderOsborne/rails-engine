@@ -8,6 +8,10 @@ class ApplicationRecord < ActiveRecord::Base
   end
 
   def self.search(query)
-    where('LOWER(name) LIKE ?', "%#{query.downcase}%").order(:name)
+    where('LOWER(name) LIKE ?', "%#{query.downcase}%")
+  end
+
+  def self.by_price(min_price, max_price)
+    where('unit_price BETWEEN ? AND ?', (min_price || 0), (max_price || Float::INFINITY))
   end
 end

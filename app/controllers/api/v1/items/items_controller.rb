@@ -38,20 +38,22 @@ class Api::V1::Items::ItemsController < ApplicationController
     end
   end
 
-
-  # def find_all
-  #   items = if params[:name].present? && !(params[:min_price] || params[:max_price])
-  #             Item.find_all_by_text(params[:name])
-  #           elsif !params[:name]
-  #             Item.find_all_by_price(params[:min_price], params[:max_price])
-  #           elsif params[:name].blank?
-  #             []
-  #           end
-  #   render json: ItemSerializer.format_items(items)
-  # end
+  def find_all
+    items = if params[:name].present? && !(params[:min_price] || params[:max_price])
+              Item.search(params[:name])
+            elsif !params[:name]
+              Item.by_price(params[:min_price], params[:max_price])
+            elsif params[:name].blank?
+              []
+            end
+    if params[:name].present? && (params[:min_price] || params[:max_price]).present?
+      render json: {"error" => {}}, status:400
+    else
+    render json: ItemSerializer.new(items)
+    end
+  end
 
   private
-
   def item_params
     params.require(:item).permit(:name, :description, :unit_price, :merchant_id)
   end
