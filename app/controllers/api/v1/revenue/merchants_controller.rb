@@ -2,7 +2,7 @@ class Api::V1::Revenue::MerchantsController < ApplicationController
   
   def index
     if params[:quantity] != nil
-      render json: MerchantRevenueSerializer.new(Merchant.top_revenue(params[:quantity]))
+      render json: MerchantNameRevenueSerializer.new(Merchant.top_revenue(params[:quantity]))
     else 
       render json: {"error" => {}}, status: 400
     end
