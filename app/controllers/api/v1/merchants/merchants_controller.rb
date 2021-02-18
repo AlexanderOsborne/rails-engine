@@ -31,5 +31,10 @@ class Api::V1::Merchants::MerchantsController < ApplicationController
 
   def most_items
     require 'pry'; binding.pry
+    begin
+      render json: ItemsSoldSerializer.new(Merchant.most_items_sold(params))
+    rescue
+      render json: {"error" => {}}, status:404
+    end
   end
 end
