@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
     scope module: :merchants do
       get 'merchants/find', to: 'merchants#find'
+      get 'merchants/most_items' ,to: 'merchants#most_items'
     end
 
     scope module: :items do
