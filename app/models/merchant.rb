@@ -15,7 +15,17 @@ class Merchant < ApplicationRecord
     .group(:id)
   end
 
-  # def self.unshipped_revenue(limit)
+  def self.most_items_sold(params)
+    joins(invoices: [:invoice_items, :transactions])
+    .select('merchants.*, sum(invoice_items.quantity) AS count')
+    .where('invoices.status = ? AND transactions.result = ?', "shipped", "success")
+    .limit(params || 5)
+    .order('count desc')
+    .group(:id)
+  end
+end
+
+# def self.unshipped_revenue(limit)
   #   joins(invoices: %i[invoice_items transactions])
   #   .select('merchants.*, sum(invoice_items.quantity * invoice_items.unit_price) AS potential_revenue')
   #   .where('invoices.status <> ? AND transactions.result = ?', "shipped", "success")
@@ -23,4 +33,3 @@ class Merchant < ApplicationRecord
   #   .limit(limit||10)
   #   .group(:id)
   # end
-end
