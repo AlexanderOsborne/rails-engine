@@ -28,4 +28,8 @@ class Api::V1::Merchants::MerchantsController < ApplicationController
       render json: MerchantSerializer.new(merchant)
       end
   end
+
+  def most_items
+    require 'pry'; binding.pry
+  end
 end
