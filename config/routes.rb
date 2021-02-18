@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
     namespace :revenue do
       resources :merchants, only: [:show, :index]
+      resources :unshipped, only: [:index]
     end
 
     # #For Daterange breakout
