@@ -16,7 +16,7 @@ RSpec.describe 'Merchants', type: :request do
       expect(json[:data].size).to eq(12)
     end
 
-    it 'fails with 404 if merchant does not exist' do
+    it 'fails with 400 if merchant does not exist' do
       get api_v1_merchant_path(999999)
       
       expect(response.status).to eq(404)

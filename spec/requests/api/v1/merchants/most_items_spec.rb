@@ -30,18 +30,20 @@ describe 'merchant most items API' do
     get '/api/v1/merchants/most_items?quantity=5'
 
     expect(response).to be_successful
-
+    
     parsed = JSON.parse(response.body, symbolize_names: true)
-
+    
     expect(parsed[:data]).to be_an(Array)
-
+    
     parsed[:data].each do |merchant|
       expect(merchant[:attributes]).to have_key(:count)
       expect(merchant[:attributes][:count]).to be_an(Integer)
     end
-
+  end
+    
+  it 'can return a list without quantity param' do
     get '/api/v1/merchants/most_items'
-
+    
     expect(response).to_not be_successful
   end
 end
