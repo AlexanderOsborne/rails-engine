@@ -1,14 +1,14 @@
 require 'rails_helper'
 
-describe 'revenue unshipped API' do
+describe 'Potential' do
   before :each do
     @c1 = create(:customer)
     @m1 = create(:merchant)
     @m2 = create(:merchant)
     @m3 = create(:merchant)
-    @i1 = create(:item, merchant: @m1, name: "chocolate")
-    @i2 = create(:item, merchant: @m2, name: "chocobot")
-    @i3 = create(:item, merchant: @m3, name: "not related")
+    @i1 = create(:item, merchant: @m1, name: "super unique name")
+    @i2 = create(:item, merchant: @m2, name: "inherited his wealth")
+    @i3 = create(:item, merchant: @m3, name: "lost MBA student")
     @in1 = create(:invoice, merchant: @m1, customer: @c1, status: "shipped", created_at: Time.now + 1.weeks)
     @in2 = create(:invoice, merchant: @m2, customer: @c1, status: "shipped")
     @in3 = create(:invoice, merchant: @m3, customer: @c1, status: "unshipped")
@@ -29,7 +29,8 @@ describe 'revenue unshipped API' do
   it 'can calculate unshipped revenue' do
 
     get "/api/v1/revenue/unshipped"
-
+    # require 'pry'; binding.pry
+  
     expect(response).to be_successful
 
     parsed = JSON.parse(response.body, symbolize_names: true)
