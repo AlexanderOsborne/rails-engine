@@ -29,8 +29,6 @@ describe 'Potential' do
   it 'can calculate unshipped revenue' do
 
     get "/api/v1/revenue/unshipped"
-    # require 'pry'; binding.pry
-  
     expect(response).to be_successful
 
     parsed = JSON.parse(response.body, symbolize_names: true)
