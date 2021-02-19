@@ -64,9 +64,9 @@ Example JSON response for the Merchant resource:
 {
 ```
 - get all merchants, allows for pagination
-  ```
-  GET /api/v1/merchants?per_page=50&page=2
-  ```
+```
+GET /api/v1/merchants?per_page=50&page=2
+```
 - get one merchant
 ```
 GET /api/v1/merchant/:id
@@ -94,7 +94,7 @@ Example of JSON response for Item resource.
 ```
 - get all items, allows for pagination
 ```
-- GET /api/v1/items?per_page=50&page=2
+GET /api/v1/items?per_page=50&page=2
 ```
 - get one item
 ```
@@ -126,6 +126,20 @@ GET /api/v1/merchants/find
 ```
 GET /api/v1/items/find_all
 ```
+
+Example of JSON response for revenue
+```
+{
+  "data": {
+    "id": "42",
+    "type": "merchant_revenue",
+    "attributes": {
+      "revenue"  : 532613.9800000001
+    }
+  }
+}
+```
+
 - Find top merchants by revenue
 ```
 GET /api/v1/revenue/merchants
@@ -134,6 +148,29 @@ GET /api/v1/revenue/merchants
 ```
 GET /api/v1/revenue/merchants/:id
 ```
+
+Example of JSON response for potential revenue
+```
+{
+  "data": [
+    {
+      "id": 834,
+      "type": "unshipped_order",
+      "attributes": {
+        "potential_revenue": 5923.78
+      }
+    },
+    {
+      "id": 28,
+      "type": "unshipped_order",
+      "attributes": {
+        "potential_revenue": 3298.63
+      }
+    }
+  ]
+}
+```
+
 - find potential(unshipped) revenue by largest invoice
 ```
 GET /api/v1/revenue/unshipped
