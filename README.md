@@ -191,7 +191,6 @@ GET /api/v1/revenue/merchant_unshipped
 See the [open issues](https://github.com/AlexanderOsborne/rails-engine/issues) for a list of proposed features (and known issues).
 
 
-
 <!-- GETTING STARTED -->
 ## Getting Started
 
@@ -207,8 +206,10 @@ See the [open issues](https://github.com/AlexanderOsborne/rails-engine/issues) f
    bundle install
    ```
 4. Setup the database: 
+   
+   The database is set up with a .pgdump. When running the setup you may see lots of output that can be ignored.
    ```
-   rails db:setup
+   Run rake db:{drop,create,migrate,seed} 
    ```
 
 <!-- CONTRIBUTING -->
@@ -251,13 +252,13 @@ Project Link: [https://github.com/AlexanderOsborne/rails-engine](https://github.
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/viewingparty/viewing_party.svg?style=for-the-badge
-[contributors-url]: https://github.com/viewingparty/viewing_party/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/viewingparty/viewing_party.svg?style=for-the-badge
-[forks-url]: https://github.com/viewingparty/viewing_party/network/members
-[stars-shield]: https://img.shields.io/github/stars/viewingparty/viewing_party.svg?style=for-the-badge
-[stars-url]: https://github.com/viewingparty/viewing_party/stargazers
-[issues-shield]: https://img.shields.io/github/issues/viewingparty/viewing_party.svg?style=for-the-badge
-[issues-url]: https://github.com/viewingparty/viewing_party/issues
+[contributors-shield]: https://img.shields.io/github/contributors/AlexanderOsborne/rails-engine.svg?style=for-the-badge
+[contributors-url]: https://github.com/AlexanderOsborne/rails-engine/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/AlexanderOsborne/rails-engine.svg?style=for-the-badge
+[forks-url]: https://github.com/AlexanderOsborne/rails-engine/network/members
+[stars-shield]: https://img.shields.io/github/stars/AlexanderOsborne/rails-engine.svg?style=for-the-badge
+[stars-url]: https://github.com/AlexanderOsborne/rails-engine/stargazers
+[issues-shield]: https://img.shields.io/github/issues/AlexanderOsborne/rails-engine.svg?style=for-the-badge
+[issues-url]: https://github.com/AlexanderOsborne/rails-engine/issues
 [product-screenshot]: images/screenshot.png
 
